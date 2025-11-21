@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Tugas Pelajar</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f6ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #3b6df5;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input {
+            width: 70%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #3b6df5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2d52c9;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-top: 10px;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .selesai {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .hapus {
+            background: red;
+            padding: 5px 10px;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Daftar Tugas Pelajar</h1>
+    <p>Catat dan kelola tugas sekolahmu!</p>
+</header>
+
+<div class="container">
+
+    <input type="text" id="tugasInput" placeholder="Tulis tugas di sini...">
+    <button onclick="tambahTugas()">Tambah</button>
+
+    <ul id="daftarTugas"></ul>
+
+</div>
+
+<script>
+    function tambahTugas() {
+        let input = document.getElementById("tugasInput");
+        let tugas = input.value.trim();
+
+        if (tugas === "") {
+            alert("Tugas tidak boleh kosong!");
+            return;
+        }
+
+        let li = document.createElement("li");
+        li.innerHTML = `
+            <span onclick="toggleSelesai(this)">${tugas}</span>
+            <span class="hapus" onclick="hapusTugas(this)">Hapus</span>
+        `;
+
+        document.getElementById("matematika inggris jawa").appendChild(li);
+        input.value = "";
+    }
+
+    function toggleSelesai(el) {
+        el.classList.toggle("selesai");
+    }
+
+    function hapusTugas(btn) {
+        btn.parentElement.remove();
+    }
+</script>
+
+</body>
+</html>
